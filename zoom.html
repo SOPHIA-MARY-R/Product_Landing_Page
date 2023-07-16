@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Headphone - Zoom</title>
+        <link rel="icon" type="image/png" sizes="32x32" href="tab-icon.png">
+        <link rel="stylesheet" href="style.css"/>
+        <script src="script.js"></script>
+    </head>
+    <body>
+        <div class="img-zoom-container">
+            <img id="headphone-image" src="headphone.png" alt="headphone"/>
+            <div id="zoom-result" class="img-zoom-result">
+                <!-- displayed by javascript -->
+            </div>
+        </div>        
+        <script>
+            imageZoom("headphone-image", "zoom-result");
+        </script>
+    </body>
+</html>
