@@ -2,23 +2,30 @@ function imageZoom(imgID, resultID) {
     var img, lens, result, cx, cy;
     img = document.getElementById(imgID);
     result = document.getElementById(resultID);
+
     /* Create lens: */
     lens = document.createElement("DIV");
     lens.setAttribute("class", "img-zoom-lens");
+
     /* Insert lens: */
     img.parentElement.insertBefore(lens, img);
+
     /* Calculate the ratio between result DIV and lens: */
     cx = result.offsetWidth / lens.offsetWidth;
     cy = result.offsetHeight / lens.offsetHeight;
+
     /* Set background properties for the result DIV */
     result.style.backgroundImage = "url('" + img.src + "')";
     result.style.backgroundSize = (img.width * cx) + "px " + (img.height * cy) + "px";
+
     /* Execute a function when someone moves the cursor over the image, or the lens: */
     lens.addEventListener("mousemove", moveLens);
     img.addEventListener("mousemove", moveLens);
+    
     /* And also for touch screens: */
     lens.addEventListener("touchmove", moveLens);
     img.addEventListener("touchmove", moveLens);
+    
     function moveLens(e) {
       var pos, x, y;
       /* Prevent any other actions that may occur when moving over the image */
@@ -39,6 +46,7 @@ function imageZoom(imgID, resultID) {
       /* Display what the lens "sees": */
       result.style.backgroundPosition = "-" + (x * cx) + "px -" + (y * cy) + "px";
     }
+
     function getCursorPos(e) {
       var a, x = 0, y = 0;
       e = e || window.event;
